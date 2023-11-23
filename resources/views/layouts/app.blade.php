@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -21,19 +21,24 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header>
+                    <div class="max-w-7xl mx-auto pt-6 px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
             @endif
 
             <!-- Page Content -->
-            <main class="container mx-auto px-4 xl:px-0 py-4">
+            <main class="max-w-7xl mx-auto flex gap-6 pt-6 pb-12 px-6 lg:px-8 text-gray-800 dark:text-gray-200">
+                @include('layouts.menubar-desktop')
+                <div class="flex-grow">
                 {{ $slot }}
+                </div>
             </main>
 
             @include('layouts.footer')
+
+            @include('layouts.menubar-mobile')
         </div>
     </body>
 </html>

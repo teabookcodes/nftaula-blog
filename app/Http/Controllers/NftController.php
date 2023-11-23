@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nft;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class NftController extends Controller
@@ -10,9 +11,9 @@ class NftController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('nfts.index');
     }
 
     /**

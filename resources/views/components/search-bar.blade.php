@@ -1,12 +1,12 @@
-<div class="flex gap-2 items-center w-full sm:w-4/5 lg:w-2/5 mx-auto mb-4">
+<div class="flex gap-4 items-center max-w-2xl mx-auto">
     {{-- Searchbar --}}
     <div class="relative w-full">
-        <x-feathericon-search class="absolute top-2.5 left-4 w-5 h-5 text-gray-600 dark:text-gray-400" />
+        <x-feathericon-search class="absolute top-3.5 left-4 w-5 h-5 text-gray-600 dark:text-gray-400" />
 
         <input
             type="search"
             placeholder="Search NFTs, collections and more..."
-            class="form-input w-full pl-12 border-none rounded-2xl bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-70"
+            class="form-input w-full pl-12 py-3 border-none rounded-2xl shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
         />
     </div>
 
