@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Nft;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Database\Query\Builder;
 use App\Http\Controllers\NftController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +18,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', function (Request $request) {
+    $query = Nft::query()->latest();
+
+    $searchQuery = $request->input('search');
+
+    if ($searchQuery) {
+        $query->where('name', 'like', "%{$searchQuery}%");
+    }
+
+    $filters = ['marketplace', 'blockchain', 'currency', 'priceMin', 'priceMax'];
+
+    if (!$request->only($filters)) {
+        $query->whereNotNull('id');
+    }
+
+    $nfts = $query->get();
+
+    return view('home', compact('nfts'));
 })->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('nfts', NftController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

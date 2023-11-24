@@ -1,7 +1,8 @@
 {{-- Mobile menubar --}}
-<div class="md:hidden z-50 fixed bottom-0 w-full bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-t-2xl">
+<div
+    class="md:hidden z-50 fixed bottom-0 w-full bg-white dark:bg-gray-800 overflow-hidden shadow-sm border border-gray-100 dark:border-gray-900 rounded-t-2xl">
     <div class="flex items-center justify-around pt-6 pb-4 text-gray-800 dark:text-gray-200">
-        
+
         <x-menubar-link :active="request()->routeIs('home')" href="{{ route('home') }}">
             <x-feathericon-search />
             <span class="text-xs leading-tight">Explore</span>
@@ -19,9 +20,9 @@
             <x-feathericon-bookmark />
             <span class="text-xs leading-tight">Saved</span>
         </x-menubar-link>
-        
+
         <x-menubar-link :active="request()->routeIs('nfts.index')" href="{{ route('nfts.index') }}">
-            <x-menu-icon />
+            <x-feathericon-grid />
             <span class="text-xs leading-tight">My NFTs</span>
         </x-menubar-link>
 

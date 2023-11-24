@@ -10,7 +10,10 @@ class Nft extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'description'
+    ];
 
     public function user(): BelongsTo
     {
