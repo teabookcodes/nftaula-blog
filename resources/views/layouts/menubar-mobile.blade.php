@@ -16,12 +16,12 @@
         @endguest
 
         @auth
-        <x-menubar-link :active="request()->routeIs('dashboard')" href="{{ route('dashboard') }}">
+        <x-menubar-link :active="request()->routeIs('saved')" href="{{ route('saved') }}">
             <x-feathericon-bookmark />
             <span class="text-xs leading-tight">Saved</span>
         </x-menubar-link>
 
-        <x-menubar-link :active="request()->routeIs('nfts.index')" href="{{ route('nfts.index') }}">
+        <x-menubar-link :active="request()->routeIs('dashboard')" href="{{ route('dashboard') }}">
             <x-feathericon-grid />
             <span class="text-xs leading-tight">My NFTs</span>
         </x-menubar-link>

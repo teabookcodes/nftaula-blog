@@ -1,1 +1,3 @@
-<img src={{ '/images/icon-small.svg' }} alt="NFTaula logo" class="w-6 h-6" />
+<a href={{ route('home') }}>
+    <img src={{ '/images/icon-small.svg' }} alt="NFTaula logo" class="w-7 h-7" />
+</a>

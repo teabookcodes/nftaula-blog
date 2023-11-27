@@ -16,11 +16,11 @@
 
             @auth
             {{-- Other links --}}
-            <x-menubar-link :active="request()->routeIs('dashboard')" href="{{ route('dashboard') }}">
+            <x-menubar-link :active="request()->routeIs('saved')" href="{{ route('saved') }}">
                 <x-feathericon-bookmark />
             </x-menubar-link>
 
-            <x-menubar-link :active="request()->routeIs('nfts.index')" href="{{ route('nfts.index') }}">
+            <x-menubar-link :active="request()->routeIs('dashboard')" href="{{ route('dashboard') }}">
                 <x-feathericon-grid />
             </x-menubar-link>
 

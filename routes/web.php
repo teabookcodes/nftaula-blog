@@ -1,11 +1,13 @@
 <?php
 
-use App\Models\Nft;
-use Illuminate\Http\Request;
+use App\Models\SavedNft;
+use App\Models\SavedCollection;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Database\Query\Builder;
 use App\Http\Controllers\NftController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,34 +20,34 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function (Request $request) {
-    $query = Nft::query()->latest();
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    $searchQuery = $request->input('search');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-    if ($searchQuery) {
-        $query->where('name', 'like', "%{$searchQuery}%");
-    }
+Route::get('/saved', function () {
+    $user = auth()->user();
+    $savedNfts = SavedNft::where('user_id', $user->id)->with('nft')->get();
+    $savedCollections = SavedCollection::where('user_id', $user->id)->with('collection')->get();
 
-    $filters = ['marketplace', 'blockchain', 'currency', 'priceMin', 'priceMax'];
-
-    if (!$request->only($filters)) {
-        $query->whereNotNull('id');
-    }
-
-    $nfts = $query->get();
-
-    return view('home', compact('nfts'));
-})->name('home');
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('saved', compact('savedNfts', 'savedCollections'));
+})->middleware(['auth', 'verified'])->name('saved');
 
 Route::resource('nfts', NftController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy'])
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+Route::resource('collections', CollectionController::class)
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
+
+
+Route::post('/nfts/{nft}/save', [NftController::class, 'save'])->name('nfts.save');
+Route::delete('/nfts/{nft}/unsave', [NftController::class, 'unsave'])->name('nfts.unsave');
+
+Route::post('/collections/{collection}/save', [CollectionController::class, 'save'])->name('collections.save');
+Route::delete('collections/{collection}/unsave', [CollectionController::class, 'unsave'])->name('collections.unsave');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

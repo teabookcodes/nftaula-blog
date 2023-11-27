@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'NFTaula') }}</title>
+    <!-- Twitter meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ config('app.name', 'NFTaula | Show & find NFTs') }}">
+    <meta name="twitter:description"
+        content="A friendly web platform for creators and collectors to show and buy NFTs 🚀🎨💎">
+    <meta name="twitter:image" content="{{ url('/images/logo.svg') }}">
+
+    <title>{{ config('app.name', 'NFTaula | Show & find NFTs') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +31,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body x-data="{ darkMode: false }" class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
 
