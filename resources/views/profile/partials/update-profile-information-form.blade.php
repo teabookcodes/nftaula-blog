@@ -13,7 +13,8 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form x-ref="form" method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}"
+        class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -51,13 +52,31 @@
         </div>
 
         <div>
-            <div class="flex items-center gap-4">
-                <div>
-                    <x-input-label for="avatar" :value="__('Avatar')" class="mb-2" />
-                    <x-avatar />
+            <div class="flex flex-col justify-center gap-2">
+
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Avatar') }}
+                </h2>
+                <div x-data="{ removeCurrentAvatar: false }" class="flex items-center gap-4">
+                    <div>
+                        <x-avatar />
+                    </div>
+                    @if (auth()->user()->avatar)
+                    <div>
+                        <!-- Hidden checkbox input -->
+                        <input x-model="removeCurrentAvatar" type="hidden" name="remove_current_avatar">
+
+                        <!-- Alpine.js directive to toggle the checkbox value and submit the form -->
+                        <x-secondary-button
+                            @click.prevent="removeCurrentAvatar = true; $nextTick(() => $refs.form.submit())">Delete
+                        </x-secondary-button>
+                    </div>
+                    @endif
                 </div>
+
                 <div>
-                    <x-text-input id="avatar" name="avatar" type="file" class="mt-8 block w-full" />
+                    <x-input-label for="avatar" :value="__('Upload new')" class="mt-4" />
+                    <x-text-input id="avatar" name="avatar" type="file" class="mt-2 block w-full" />
                     <x-input-error class="mt-2" :messages="$errors->get('name')" />
                 </div>
             </div>

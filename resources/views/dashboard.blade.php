@@ -68,7 +68,7 @@
                 </x-dropdown>
                 @endif
             </div>
-            <a href={{ route('nfts.show', $nft) }}>
+            <a href={{ route('nft-detail', $nft) }}>
                 <div class="p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-xl">
                     <p class="text-lg font-medium text-gray-900 dark:text-gray-100">{{ $nft->name }}</p>
                     <p class="text-sm font-medium text-gray-600 dark:text-gray-400">{{ $nft->collection_name }}</p>
@@ -124,7 +124,7 @@
                 </x-dropdown>
                 @endif
             </div>
-            <a href={{ route('collections.show', $collection) }}>
+            <a href={{ route('collection-detail', $collection) }}>
                 <div class="p-4 bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-xl">
                     <p class="text-lg font-medium text-gray-900 dark:text-gray-100">{{ $collection->name }}</p>
                     <p class="text-sm font-medium text-gray-600 dark:text-gray-400 capitalize">{{ $collection->category

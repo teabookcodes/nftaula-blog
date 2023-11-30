@@ -18,7 +18,7 @@
       </Link> --}}
       <x-application-logo />
     </div>
-    <div class="hidden lg:flex lg:w-1/3 items-center justify-end gap-4">
+    <div class="hidden sm:flex lg:w-1/3 pr-2 lg:pr-6 2xl:pr-0 items-center justify-end gap-4">
       <x-theme-switcher />
       {{--
       <ThemeSwitcher />

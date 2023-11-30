@@ -4,8 +4,8 @@
     <div class="flex items-center justify-around pt-6 pb-4 text-gray-800 dark:text-gray-200">
 
         <x-menubar-link :active="request()->routeIs('home')" href="{{ route('home') }}">
-            <x-feathericon-search />
-            <span class="text-xs leading-tight">Explore</span>
+            <x-feathericon-home />
+            <span class="text-xs leading-tight">Home</span>
         </x-menubar-link>
 
         @guest

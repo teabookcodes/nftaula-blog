@@ -1,11 +1,11 @@
 {{-- Desktop menubar --}}
-<div class="hidden md:flex fixed lg:static bottom-4 w-full -ml-6 lg:ml-0 2xl:-ml-24 lg:w-20 lg:h-1/2 ">
+<div class="hidden md:flex z-50 w-full 2xl:w-20 fixed bottom-4 2xl:bottom-96 2xl:left-4">
     <div
-        class="mx-auto p-6 bg-white dark:bg-gray-800 overflow-hidden shadow-md lg:shadow-sm border border-gray-100 dark:border-gray-900 rounded-2xl">
-        <div class="flex flex-row lg:flex-col gap-6 items-start justify-center">
+        class="mx-auto p-6 bg-white dark:bg-gray-800 overflow-hidden drop-shadow-lg border border-indigo-500 dark:border-indigo-500 rounded-2xl">
+        <div class="flex flex-row 2xl:flex-col gap-6 items-start justify-center">
 
             <x-menubar-link :active="request()->routeIs('home')" href="{{ route('home') }}">
-                <x-feathericon-search />
+                <x-feathericon-home />
             </x-menubar-link>
 
             @guest

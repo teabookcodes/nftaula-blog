@@ -14,13 +14,9 @@ class NftController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        $user = Auth::user();
-
-        return view('dashboard', [
-            'nfts' => $user->nfts()->latest()->get(),
-        ]);
+        //
     }
 
     /**
@@ -66,11 +62,9 @@ class NftController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Nft $nft): View
+    public function show(Nft $nft)
     {
-        return view('nfts.show', [
-            'nft' => $nft
-        ]);
+        //
     }
 
     /**

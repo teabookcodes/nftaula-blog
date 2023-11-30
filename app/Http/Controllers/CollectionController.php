@@ -14,13 +14,9 @@ class CollectionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        $user = Auth::user();
-
-        return view('dashboard', [
-            'collections' => $user->collections()->latest()->get(),
-        ]);
+        //
     }
 
     /**
@@ -66,11 +62,9 @@ class CollectionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Collection $collection): View
+    public function show(Collection $collection)
     {
-        return view('collections.show', [
-            'collection' => $collection
-        ]);
+        //
     }
 
     /**

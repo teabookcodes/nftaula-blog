@@ -20,7 +20,7 @@ $categories = [
 ];
 @endphp
 
-<form method="GET" action="{{ route('home') }}">
+<form method="GET" action="{{ route(\Request::route()->getName()) }}">
   <div class="flex gap-4 items-center max-w-2xl mx-auto">
     {{-- Searchbar --}}
     <div class="relative w-full">
@@ -33,8 +33,8 @@ $categories = [
 
       <div class="absolute top-2 right-2 flex gap-2">
         {{-- Clear search button --}}
-        @if(request()->has('search'))
-        <a href="{{ route('home') }}"
+        @if(request()->has('search') || request()->has('category'))
+        <a href="{{ route(\Request::route()->getName()) }}"
           class="p-2 text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900 rounded-full transition">
           <x-feathericon-x class="w-4 h-4" />
         </a>

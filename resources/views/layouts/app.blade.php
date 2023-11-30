@@ -42,7 +42,7 @@
         $type = session('info') ? 'info' : (session('warning') ? 'warning' : (session('error') ? 'error' : 'success'));
         @endphp
 
-        <x-toast type="{{ $type }}" position="top-right">
+        <x-toast type="{{ $type }}" position="bottom-right">
             {{ session($type) }}
         </x-toast>
         @endif
@@ -58,13 +58,14 @@
 
         <!-- Page Content -->
         <main class="max-w-7xl mx-auto flex gap-6 pt-6 pb-12 px-6 lg:px-8 text-gray-800 dark:text-gray-200">
-            @include('layouts.menubar-desktop')
-            <div class="flex-grow">
+            <div class="flex-grow min-h-screen">
                 {{ $slot }}
             </div>
         </main>
 
         @include('layouts.footer')
+
+        @include('layouts.menubar-desktop')
 
         @include('layouts.menubar-mobile')
     </div>
