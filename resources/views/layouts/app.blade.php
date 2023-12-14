@@ -50,24 +50,20 @@
         <!-- Page Heading -->
         @if (isset($header))
         <header>
-            <div class="max-w-7xl mx-auto pt-6 px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto pt-6 px-4">
                 {{ $header }}
             </div>
         </header>
         @endif
 
         <!-- Page Content -->
-        <main class="max-w-7xl mx-auto flex gap-6 pt-6 pb-12 px-6 lg:px-8 text-gray-800 dark:text-gray-200">
+        <main class="max-w-7xl mx-auto py-12 px-2 text-gray-800 dark:text-gray-200">
             <div class="flex-grow min-h-screen">
                 {{ $slot }}
             </div>
         </main>
 
         @include('layouts.footer')
-
-        @include('layouts.menubar-desktop')
-
-        @include('layouts.menubar-mobile')
     </div>
 </body>
 

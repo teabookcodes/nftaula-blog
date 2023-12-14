@@ -16,6 +16,6 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "flowbite": "^2.2.0"
+        "@toast-ui/editor": "^3.2.2"
     }
 }

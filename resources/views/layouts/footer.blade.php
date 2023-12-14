@@ -1,5 +1,6 @@
 <div class="w-full text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 py-2 px-4 overflow-hidden shadow-sm">
-  <div class="container mx-auto px-4 xl:px-0 pt-4 pb-24 flex items-center justify-between">
+  <div
+    class="container mx-auto sm:px-4 xl:px-0 py-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:justify-between">
     <span class="inline-flex sm:mt-0 mt-2 justify-center sm:justify-start">
       <a href="https://twitter.com/NFTaula" rel="noopener noreferrer"
         class="ml-3 text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300" target="_blank">

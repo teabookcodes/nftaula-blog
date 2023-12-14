@@ -44,13 +44,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function nfts(): HasMany
+    public function articles(): HasMany
     {
-        return $this->hasMany(Nft::class);
-    }
-
-    public function collections(): HasMany
-    {
-        return $this->hasMany(Collection::class);
+        return $this->hasMany(Article::class);
     }
 }

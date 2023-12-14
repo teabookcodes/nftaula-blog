@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class SavedNft extends Model
+class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'nft_id'];
+    protected $fillable = [
+        'title',
+        'image',
+        'content'
+    ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function nft()
-    {
-        return $this->belongsTo(Nft::class);
     }
 }
